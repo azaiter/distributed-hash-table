@@ -1,9 +1,3 @@
-// talk about the initialization and node awareness issue
-// talk about the level of consensus between the nodes
-// talk about the data loss when a node leaves.
-// talk about the re-arrangement needed when a node enters/leaves
-// talk about collision
-
 var express = require('express');
 var request = require("request");
 var fs = require("fs");
