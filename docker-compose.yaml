@@ -1,0 +1,38 @@
+version: "3"
+# 1 - 4 - 8 - 12 - 16
+services:
+    dht1:
+        ports:
+            - '10080:15000'
+        environment:
+            - INIT_CONFIG=dht1-1-dht16-16-dht4-4-dht8-8
+            - MODULO_VAL=16
+        build: './'
+    dht4:
+        ports:
+            - '10081:15000'
+        environment:
+            - INIT_CONFIG=dht4-4-dht1-1-dht8-8-dht12-12
+            - MODULO_VAL=16
+        build: './'
+    dht8:
+        ports:
+            - '10082:15000'
+        environment:
+            - INIT_CONFIG=dht8-8-dht4-4-dht12-12-dht16-16
+            - MODULO_VAL=16
+        build: './'
+    dht12:
+        ports:
+            - '10083:15000'
+        environment:
+            - INIT_CONFIG=dht12-12-dht8-8-dht16-16-dht1-1
+            - MODULO_VAL=16
+        build: './'
+    dht16:
+        ports:
+            - '10084:15000'
+        environment:
+            - INIT_CONFIG=dht16-16-dht12-12-dht1-1-dht4-4
+            - MODULO_VAL=16
+        build: './'
