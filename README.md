@@ -106,11 +106,12 @@ dht8_1   | Searching for Some Great Book 2 in node dht8@192.168.80.6 that has in
 dht8_1   | Key Some Great Book 2 found in node dht8@192.168.80.6 that has index 8...
 
 # Leave command
-dht4_1   | a LEAVE command was sent to node dht4@192.168.80.4.
+dht4_1   | a LEAVE command was sent to node dht4@192.168.96.6.
 dht1_1   | Heartbeat from dht1 to dht4 failed, changing nodes chain.
-dht1_1   | Subsequent 1 hostname is now: dht8@192.168.80.6
-dht1_1   | Subsequent 2 hostname is now: dht12
-dht16_1  | Changed SUBSEQUENT2_HOSTNAME to dht8@192.168.80.6 with index of 8.
+dht1_1   | Subsequent 1 hostname is now: dht8@192.168.96.2
+dht1_1   | Subsequent 2 hostname is now: dht12@192.168.96.4
+dht16_1  | Changed SUBSEQUENT2_HOSTNAME to dht8@192.168.96.2 with index of 8.
+dht8_1   | Changed PREVIOUS_HOSTNAME to dht1@192.168.96.5 with index of 1.
 
 # Join command
 dht4_1   | a JOIN command was sent to node dht4@192.168.80.4.

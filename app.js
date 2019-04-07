@@ -107,11 +107,14 @@ setTimeout(()=>{
                     SUBSEQUENT2_INDEX = body.split(":")[1];
                     ips[SUBSEQUENT2_HOSTNAME] = await util.promisify(dns.lookup)(SUBSEQUENT2_HOSTNAME);
                     ips[SUBSEQUENT2_HOSTNAME] = ips[SUBSEQUENT2_HOSTNAME].address;
-                    logger.log(`Subsequent 2 hostname is now: ${SUBSEQUENT2_HOSTNAME}`);
+                    logger.log(`Subsequent 2 hostname is now: ${SUBSEQUENT2_HOSTNAME}@${ips[SUBSEQUENT2_HOSTNAME]}`);
                 });
 
-                // change previou's subsequent 2 to new subsequent 1
+                // change previous's subsequent 2 to new subsequent 1
                 request.get(`http://${PREVIOUS_HOSTNAME}:${SOCKET_PORT}/internal/changehost/SUBSEQUENT2_HOSTNAME/${SUBSEQUENT1_HOSTNAME}/${SUBSEQUENT1_INDEX}`);
+
+                // change the new subsequent to have a previous of current
+                request.get(`http://${SUBSEQUENT1_HOSTNAME}:${SOCKET_PORT}/internal/changehost/PREVIOUS_HOSTNAME/${CURRENT_HOSTNAME}/${CURRENT_INDEX}`);
             }
         });
         setTimeout(()=>{next();}, 5000);
