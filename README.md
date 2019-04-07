@@ -4,6 +4,22 @@ Author: Abdulrahman (Zack) Zaiter
 
 This program is a proof of concept of simple cloud-native distributed hash table implementation, each peer is a docker container within a contained docker-compose network.
 
+## Application Design:
+- Assumes a circular arrangement of peers.
+- Each peer will hold a small subset of the totality of the (key, value) pairs.
+- Keys  are  content  names  (e.g.,  names  of  movies,  albums,  and  software,  or  file),  and  the  value  is  be  the  any data  at  which  the  content  is  stored;  in  this  case,  an  example  key-value  pair  is  (Led  Zeppelin  IV,  Some Value).
+- Each Peer should provide the following services to a user:
+    - Insert a (content name,  data) pair into the DHT – we are assuming that the user has a content at his key that they want the DHT to be aware of.
+    - The user enters the content name and their data
+    - The peer should then store the (content name, data) pair in one of the peers in the DHT
+- Retrieve data values corresponding to a given content name
+    - The user enters a content name
+    - The peer should return the list of all the data values where the content is available
+    - The user should contact one of the can do whatever with the data .
+- Maintain DHT when a peer:
+    - Abruptly leaves the DHT
+    - Wants to join the DHT
+
 ## Requirements:
 - Docker and Docker-Compose
 - That's it.
@@ -103,19 +119,3 @@ dht1_1   | Changed SUBSEQUENT1_HOSTNAME to dht4@192.168.80.4 with index of 4.
 dht8_1   | Changed PREVIOUS_HOSTNAME to dht4@192.168.80.4 with index of 4.
 dht16_1  | Changed SUBSEQUENT2_HOSTNAME to dht4@192.168.80.4 with index of 4.
 ```
-
-## Application Design:
-- Assumes a circular arrangement of peers.
-- Each peer will hold a small subset of the totality of the (key, value) pairs.
-- Keys  are  content  names  (e.g.,  names  of  movies,  albums,  and  software,  or  file),  and  the  value  is  be  the  any data  at  which  the  content  is  stored;  in  this  case,  an  example  key-value  pair  is  (Led  Zeppelin  IV,  Some Value).
-- Each Peer should provide the following services to a user:
-    - Insert a (content name,  data) pair into the DHT – we are assuming that the user has a content at his key that they want the DHT to be aware of.
-    - The user enters the content name and their data
-    - The peer should then store the (content name, data) pair in one of the peers in the DHT
-- Retrieve data values corresponding to a given content name
-    - The user enters a content name
-    - The peer should return the list of all the data values where the content is available
-    - The user should contact one of the can do whatever with the data .
-- Maintain DHT when a peer:
-    - Abruptly leaves the DHT
-    - Wants to join the DHT
